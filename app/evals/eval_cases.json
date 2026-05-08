@@ -1,0 +1,22 @@
+[
+  {
+    "input": "chest pain and shortness of breath",
+    "expected_triage": "EMERGENCY"
+  },
+  {
+    "input": "high fever and dehydration",
+    "expected_triage": "URGENT_CARE"
+  },
+  {
+    "input": "fever and cough",
+    "expected_triage": "PRIMARY_CARE"
+  },
+  {
+    "input": "mild fatigue after work",
+    "expected_triage": "PRIMARY_CARE"
+  },
+  {
+    "input": "I feel slightly tired today",
+    "expected_triage": "UNCERTAIN"
+  }
+]
