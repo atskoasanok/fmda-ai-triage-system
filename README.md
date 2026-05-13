@@ -278,6 +278,42 @@ TEMPERATURE=0.5
 
 ---
 
+## Configurable LLM Providers
+
+FMDA supports configurable OpenAI-compatible LLM providers through `.env`.
+
+### OpenAI Example
+
+```env
+LLM_PROVIDER=openai
+
+API_KEY=your_openai_key
+
+BASE_URL=https://api.openai.com/v1
+
+MODEL_NAME=gpt-4o
+```
+
+### DeepSeek Example
+
+```env
+LLM_PROVIDER=deepseek
+
+API_KEY=your_deepseek_key
+
+BASE_URL=https://api.deepseek.com
+
+MODEL_NAME=deepseek-v4-flash
+```
+
+### Notes
+
+- FMDA uses provider-agnostic configuration
+- Compatible with OpenAI-style APIs
+- Supports future provider expansion
+- Mock mode remains supported for development
+
+----
 # Example API Request
 
 ```bash

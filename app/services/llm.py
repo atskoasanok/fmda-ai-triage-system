@@ -6,9 +6,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 client = OpenAI(
-    api_key=settings.OPENAI_API_KEY
+    api_key=settings.API_KEY,
+    base_url=settings.BASE_URL
 )
 
 USE_MOCK = settings.USE_MOCK
