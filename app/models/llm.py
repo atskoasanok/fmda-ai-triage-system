@@ -4,9 +4,9 @@ from openai import OpenAI
 
 
 client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
+    api_key=settings.API_KEY,
+    base_url=settings.BASE_URL
 )
-
 
 SYSTEM_PROMPT = """
 You are FMDA, a safety-aware family medicine triage assistant.

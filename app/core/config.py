@@ -12,9 +12,19 @@ class Settings:
 
         self.APP_NAME = "FMDA"
 
-        self.OPENAI_API_KEY = os.getenv(
-            "OPENAI_API_KEY",
-            ""
+        self.LLM_PROVIDER = os.getenv(
+        "LLM_PROVIDER",
+         "openai"
+        )
+
+        self.API_KEY = os.getenv(
+        "API_KEY",
+         ""
+        )
+
+        self.BASE_URL = os.getenv(
+        "BASE_URL",
+        "https://api.openai.com/v1"
         )
 
         self.MODEL_NAME = os.getenv(
