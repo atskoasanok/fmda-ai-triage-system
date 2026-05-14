@@ -36,3 +36,6 @@ build/
 
 # Local runtime files
 *.sqlite3
+
+# .claude not to commit
+.claude/
