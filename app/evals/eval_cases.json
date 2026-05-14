@@ -18,5 +18,13 @@
   {
     "input": "I feel slightly tired today",
     "expected_triage": "UNCERTAIN"
+  },
+  {
+    "input": "chest tightness",
+    "expected_triage": "EMERGENCY"
+  },
+  {
+    "input": "chest tightness and mild fatigue",
+    "expected_triage": "EMERGENCY"
   }
 ]
