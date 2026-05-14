@@ -24,6 +24,7 @@ def apply_safety_guardrails(response: Dict) -> Dict:
                 "⚠️ Medical prescription or dosage guidance is not supported. "
                 "Please consult a licensed healthcare professional."
             )
+            break
 
     # Force emergency escalation notice
     if response.get("triage_level") == "EMERGENCY":
