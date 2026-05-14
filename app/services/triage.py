@@ -7,7 +7,7 @@ EMERGENCY_KEYWORDS = [
     "unconscious",
     "stroke",
     "severe bleeding",
-    # TODO: chest tightness 尚未加入，待補充
+    "chest tightness",
 ]
 
 URGENT_KEYWORDS = [
