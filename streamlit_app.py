@@ -50,6 +50,9 @@ symptoms = st.text_area(
 analyze_clicked = st.button("🔍 Analyze Symptoms", type="primary", use_container_width=True)
 
 # ── Results area ─────────────────────────────────────────────────────────────────
+import os
+from app.core.config import settings
+
 if analyze_clicked:
     if not symptoms.strip():
         st.warning("Please enter your symptoms first.")
@@ -58,7 +61,7 @@ if analyze_clicked:
     with st.spinner("Analyzing symptoms, please wait..."):
         try:
             response = requests.post(
-                "http://127.0.0.1:8000/diagnose",
+                f"{settings.FMDA_BACKEND_URL}/diagnose",
                 json={"symptoms": symptoms},
                 timeout=30,
             )
