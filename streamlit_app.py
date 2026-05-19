@@ -1,7 +1,11 @@
 # TODO: add triage alert cards
 
+import os
+
 import streamlit as st
 import requests
+
+BACKEND_URL = os.getenv("FMDA_BACKEND_URL", "http://127.0.0.1:8000")
 
 # ── Page config ─────────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -32,6 +36,11 @@ TRIAGE_CONFIG = {
         "display": st.success,
         "color": "#2ECC71",
     },
+    "UNCERTAIN": {
+        "label": "❓ Needs Clarification",
+        "display": st.info,
+        "color": "#AAAAAA",
+    },
 }
 
 # ── Header ───────────────────────────────────────────────────────────────────────
@@ -58,7 +67,7 @@ if analyze_clicked:
     with st.spinner("Analyzing symptoms, please wait..."):
         try:
             response = requests.post(
-                "http://127.0.0.1:8000/diagnose",
+                f"{BACKEND_URL}/diagnose",
                 json={"symptoms": symptoms},
                 timeout=30,
             )
@@ -71,8 +80,8 @@ if analyze_clicked:
             st.error(f"Backend error: {e}")
             st.stop()
 
-    triage_level = result.get("triage_level", "SELF_CARE")
-    config = TRIAGE_CONFIG.get(triage_level, TRIAGE_CONFIG["SELF_CARE"])
+    triage_level = result.get("triage_level", "UNCERTAIN")
+    config = TRIAGE_CONFIG.get(triage_level, TRIAGE_CONFIG["UNCERTAIN"])
 
     st.divider()
 

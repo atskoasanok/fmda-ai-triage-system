@@ -42,6 +42,10 @@ class Settings:
                 "TEMPERATURE",
                 "0.3"
             )
+        ) 
+        self.FMDA_BACKEND_URL = os.getenv(
+            "FMDA_BACKEND_URL",
+            "http://127.0.0.1:8000"
         )
 
 
