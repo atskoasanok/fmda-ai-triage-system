@@ -32,6 +32,11 @@ TRIAGE_CONFIG = {
         "display": st.success,
         "color": "#2ECC71",
     },
+    "UNCERTAIN": {
+        "label": "❓ Needs Clarification",
+        "display": st.info,
+        "color": "#AAAAAA",
+    },
 }
 
 # ── Header ───────────────────────────────────────────────────────────────────────
@@ -50,6 +55,9 @@ symptoms = st.text_area(
 analyze_clicked = st.button("🔍 Analyze Symptoms", type="primary", use_container_width=True)
 
 # ── Results area ─────────────────────────────────────────────────────────────────
+import os
+from app.core.config import settings
+
 if analyze_clicked:
     if not symptoms.strip():
         st.warning("Please enter your symptoms first.")
@@ -58,7 +66,7 @@ if analyze_clicked:
     with st.spinner("Analyzing symptoms, please wait..."):
         try:
             response = requests.post(
-                "http://127.0.0.1:8000/diagnose",
+                f"{settings.FMDA_BACKEND_URL}/diagnose",
                 json={"symptoms": symptoms},
                 timeout=30,
             )
@@ -71,8 +79,8 @@ if analyze_clicked:
             st.error(f"Backend error: {e}")
             st.stop()
 
-    triage_level = result.get("triage_level", "SELF_CARE")
-    config = TRIAGE_CONFIG.get(triage_level, TRIAGE_CONFIG["SELF_CARE"])
+    triage_level = result.get("triage_level", "UNCERTAIN")
+    config = TRIAGE_CONFIG.get(triage_level, TRIAGE_CONFIG["UNCERTAIN"])
 
     st.divider()
 
