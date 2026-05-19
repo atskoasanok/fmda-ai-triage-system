@@ -32,6 +32,11 @@ TRIAGE_CONFIG = {
         "display": st.success,
         "color": "#2ECC71",
     },
+    "UNCERTAIN": {
+        "label": "❓ Needs Clarification",
+        "display": st.info,
+        "color": "#AAAAAA",
+    },
 }
 
 # ── Header ───────────────────────────────────────────────────────────────────────
@@ -74,8 +79,8 @@ if analyze_clicked:
             st.error(f"Backend error: {e}")
             st.stop()
 
-    triage_level = result.get("triage_level", "SELF_CARE")
-    config = TRIAGE_CONFIG.get(triage_level, TRIAGE_CONFIG["SELF_CARE"])
+    triage_level = result.get("triage_level", "UNCERTAIN")
+    config = TRIAGE_CONFIG.get(triage_level, TRIAGE_CONFIG["UNCERTAIN"])
 
     st.divider()
 
